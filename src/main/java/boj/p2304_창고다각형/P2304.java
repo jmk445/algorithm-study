@@ -43,9 +43,8 @@ public class P2304 {
         }
         int i = 0,j = Integer.MAX_VALUE;
         while(i < j){
-            if(i < highestLoc){
-
-            }
+//            if(i < highestLoc)
+//            }
 
         }
     }
