@@ -3,6 +3,8 @@ package boj.p1780_종이의개수;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 public class P1780 {
     static int sameCnt = 0;
@@ -32,22 +34,23 @@ public class P1780 {
             }
             return;
         }
-
-        int[][] newMap = new int[N/3][N/3];
-        for(int i = 0; i < map.length;i ++){
-            int[] newLine = new int[N/3];
-            for(int j = 0; j < map[i].length; j++){
-//                newMap[i][j] =
-                if(j%3 == 0){
-//                    newLine[i] =
-                }
-            }
-
+        int splitLength = 3/N;
+        List<int[][]> splitedMaps = new ArrayList<int[][]>();
+        for(int i = 0; i < 9;i ++){
+            int[][] splited = new int[splitLength][splitLength];
+            splitedMaps.add(splited);
         }
-//        recursion();
+        int[][] splited = new int[splitLength][splitLength];
 
+        for(int i = 0; i < map.length; i ++){
+            for(int j = 0; j < map[i].length; j++){
+                splitedMaps.get(j/splitLength + i/splitLength * 3) [i%splitLength][j%splitLength] = map[i][j];
+            }
+        }
 
-
+        for(int i = 0; i < splitedMaps.size(); i++){
+            recursion(splitedMaps.get(i),);
+        }
     }
     static boolean allSame(int[][] map){
         int prev = map[0][0];
