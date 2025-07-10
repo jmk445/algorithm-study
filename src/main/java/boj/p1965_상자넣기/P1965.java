@@ -17,9 +17,15 @@ public class P1965 {
             sizes[i] = Integer.parseInt(st.nextToken());
         }
 
-        //greedy
-
-
+        //1.greedy
+        //2. 항상 최대의 개수로 가지는 조합을 가지고, 거기서
+//        8
+//        1 6 2 5 7 3 5 6
+//          2 2 3 4 3 4 5
+        int[] cnt = new int[N-1];
+        for(int i = 1; i < N; i++){
+            cnt[i] = //앞에서 자기보다 작은 거 중에 cnt가 가장 큰거 + 1;
+        }
 
 
     }
