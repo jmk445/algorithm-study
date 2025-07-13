@@ -28,7 +28,7 @@ public class P1706 {
                     if(sb.length() > 1){
                         sb.delete(sb.length(), sb.length());
                         String word = sb.toString();
-                        System.out.println(word);
+//                        System.out.println(word);
                         words.add(sb.toString());
                         sb = new StringBuilder();
                     }
@@ -37,9 +37,9 @@ public class P1706 {
                     }
                 }
             }
-            if(!sb.isEmpty() && sb.length() > 1){
+            if(sb.length() > 1){
                 String word = sb.toString();
-                System.out.println(word);
+//                System.out.println(word);
                 words.add(word);
             }
             sb = new StringBuilder();
@@ -53,8 +53,7 @@ public class P1706 {
                 }else{
                     if(sb.length() > 1){
                         sb.delete(sb.length(), sb.length());
-                        String word = sb.toString();
-                        System.out.println(word);
+//                        String word = sb.toString();
                         words.add(sb.toString());
                         sb = new StringBuilder();
                     }else{
@@ -62,26 +61,62 @@ public class P1706 {
                     }
                 }
             }
-            if(!sb.isEmpty() && sb.length() > 1){
+            if( sb.length() > 1){
                 String word = sb.toString();
-                System.out.println(word);
+//                System.out.println(word);
                 words.add(word);
             }
             sb = new StringBuilder();
 
         }
 
-        System.out.println(words.size());
 
-        int r = words.size(),l = 0;
-        while(l < r){
-            int mid = (l+r)/2;
-            if(dicCompare(words.get(l), words.get(mid))){
-                mid = l;
-            }else{
-                r = mid;
+        String answer = words.get(0);
+        for(String word : words){
+            if(isWord1SmmallerThanWord2(word,answer)){
+                answer = word;
             }
         }
+        System.out.println(answer);
+    }
 
+    private static boolean isWord1SmmallerThanWord2(String word1, String word2){
+        //aab aac
+        //앞자리에서 빠른게 나올 수록 빠르다.
+        //첫번째 자리 비교, 같으면 두번째 자리비교, ...
+
+        //길이가 다른 경우
+        //길이가 같은 경우
+
+        if(word1.length() < word2.length()){
+            StringBuilder sb = new StringBuilder();
+            sb.append(word1);
+            for(int i = 0; i < (word2.length() - word1.length()); i++){
+                sb.append(" ");
+            }
+            word1 = sb.toString();
+        }else{
+            StringBuilder sb = new StringBuilder();
+            sb.append(word2);
+            for(int i = 0; i < (word1.length() - word2.length()); i++){
+                sb.append(" ");
+            }
+            word2 = sb.toString();
+        }
+//        for(int i = 0; i < word1.length() ; i++){
+//            System.out.print(word1.toCharArray()[i] + " < "+  word2.toCharArray()[i] + " : ");
+//            System.out.println(word1.toCharArray()[i] < word2.toCharArray()[i]);
+//            if(word1.toCharArray()[i] < word2.toCharArray()[i]){
+////                System.out.println(word1 +" is smaller than " + word2 + " because of this : " + word1.toCharArray()[i] + "is smaller than this char : " + word2.toCharArray()[i] + " idx : " + i);
+//                return true;
+//            }
+//        }
+        for(int i = 0; i < word1.length() ; i++){
+            if(word1.toCharArray()[i] != word2.toCharArray()[i]){
+                return word1.toCharArray()[i] < word2.toCharArray()[i];
+            }
+        }
+        //여기까지 왔다는 것은 다 같다는 뜻
+        return false;
     }
 }
