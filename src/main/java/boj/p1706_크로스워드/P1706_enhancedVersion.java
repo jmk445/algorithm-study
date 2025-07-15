@@ -1,4 +1,4 @@
-package boj.p1706;
+package boj.p1706_크로스워드;
 
 import java.io.*;
 import java.util.*;
