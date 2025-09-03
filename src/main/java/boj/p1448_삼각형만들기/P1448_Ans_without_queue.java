@@ -3,9 +3,11 @@ package boj.p1448_삼각형만들기;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.Arrays;
+import java.util.Queue;
 
-public class P1448_Ans {
+public class P1448_Ans_without_queue {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -19,25 +21,12 @@ public class P1448_Ans {
 
 //        System.out.println(Arrays.toString(arr));
 
-        Queue<Integer> queue = new ArrayDeque<>();
-
-        queue.offer(arr[0]);
-        queue.offer(arr[1]);
-        queue.offer(arr[2]);
-
         for(int i = 0; i < N - 2; i++){
-            long b1 = queue.poll();
-            long b2 = queue.poll();
-            long b3 = queue.poll();
 
-            if(b1 < b2 + b3){
-                System.out.println(b1+b2+b3);
+            if(arr[i] < arr[i+1] + arr[i+2]){
+                System.out.println(arr[i]+arr[i+1]+arr[i+2]);
                 return;
             }
-
-            queue.offer(arr[i]);
-            queue.offer(arr[i+1]);
-            queue.offer(arr[i+2]);
         }
 
         System.out.println("-1");
