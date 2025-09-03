@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class P1448(){
+public class P1448{
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -14,9 +14,9 @@ public class P1448(){
             arr[i] = Integer.parseInt(br.readLine());
         }
 
-        if(!isTriangle(arr)){
-            System.out.println("-1");
-        }
+        int[] dp = new int[N];
+
+
 
     }
 
@@ -40,6 +40,7 @@ public class P1448(){
             }
         }
 
+        return true;
 
     }
 }
